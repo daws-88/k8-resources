@@ -4,7 +4,7 @@ metadata:
   name: annotations-info
   annotations:
     imageregistry: "https://hub.docker.com/"
-    ://company.com: "finance-team@company.com"
+    company.com: "finance-team@company.com"
   
 spec:
    containers:
