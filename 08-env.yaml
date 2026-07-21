@@ -7,8 +7,7 @@ spec:
     - name: nginx
       image: nginx
       env:
-        - name: roboshop
-          value: "Hello from the environment"
-        - trainer: venkatsai
-          course: devsecops
-          
+        - name: TRAINER
+          value: "venkatsai"
+        - name: COURSE
+          value: "devsecops"
