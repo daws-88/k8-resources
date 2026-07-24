@@ -7,10 +7,10 @@ spec:
   selector:
     project: roboshop
     component: frontend
-    environment: pre-prod
-    purpose: load-blancer
+    environment: dev
+    purpose: load-balancer
   ports:
     - protocol: TCP
-      port: 80 
-      targetPort: 80 
-      nodeport: 30007
+      port: 80 # service port
+      targetPort: 80 # container port
+      nodePort: 30007 
