@@ -7,8 +7,8 @@ spec:
   selector:
     project: roboshop
     component: frontend
-    environment: dev
-    purpose: load-balancer
+    environment: pre-prod
+    purpose: load-blancer
   ports:
     - protocol: TCP
       port: 80 # service port
