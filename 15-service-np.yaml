@@ -7,7 +7,7 @@ spec:
   selector:
     project: roboshop
     component: frontend
-    environment: prod
+    environment: qa
     purpose: study
   ports:
     - protocol: TCP
