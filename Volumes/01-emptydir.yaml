@@ -2,7 +2,7 @@ apiVersion: v1
 kind: pod
 metadata:
    name: emptydir-demo 
-   namespace: 
+   namespace: default
    
 spec:
    containers:
