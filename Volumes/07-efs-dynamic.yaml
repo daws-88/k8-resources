@@ -15,6 +15,7 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
+  name: nginx-efs-demo
   labels:
     purpose: efs-dynamic
 spec:
