@@ -31,8 +31,6 @@ spec:
   
 ---
 ##3. Pod
-
-## 3. Pod
 apiVersion: v1
 kind: Pod
 metadata:
