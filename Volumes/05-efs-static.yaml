@@ -13,7 +13,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   csi:
     driver: efs.csi.aws.com
-    volumeHandle: efs:fs-e8a95a42 ## replacr ur id
+    volumeHandle: fs-0ab830f4bf1b1be3d
 
 ---
 ##2. PVC
@@ -45,7 +45,7 @@ spec:
     - name: nginx-html
       mountPath: /usr/share/nginx/html
   nodeSelector:
-     topology.kubernetes.io/zone: us-east-1b
+     topology.kubernetes.io/zone: us-east-1d
   
   volumes:
   - name: nginx-html
