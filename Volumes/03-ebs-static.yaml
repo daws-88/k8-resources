@@ -12,7 +12,7 @@ spec:
   csi:
     driver: ebs.csi.aws.com
     fsType: ext4
-    volumeHandle: vol-09bcfa91cd9aac343
+    volumeHandle: vol-05e20cb9ba425b10e
 
 ---
 ## 2.PVC
@@ -45,7 +45,7 @@ spec:
     - name: nginx-html
       mountPath: /usr/share/nginx/html
   nodeSelector:
-     topology.kubernetes.io/zone: us-east-1b
+     topology.kubernetes.io/zone: us-east-1c
 
   volumes:
   - name: nginx-html
