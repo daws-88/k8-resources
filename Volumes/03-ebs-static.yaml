@@ -1,0 +1,70 @@
+# PV creation 
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ebs-test
+spec:
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain # Retain -> do not delete data. Recycle -> delete data ,do not delete disk. Delete -> delete the disk
+  capacity:
+    storage: 15Gi
+  csi:
+    driver: ebs.csi.aws.com
+    fsType: ext4
+    volumeHandle: vol-03c604538dd7d2f41 ## replacr your volume id
+
+---
+## 2.PVC
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ebs-test
+spec:
+  storageClassName: "" # Empty string must be explicitly set otherwise default StorageClass will be set
+  volumeName: ebs-test
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 15Gi
+      
+---
+## 3. Pod
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-ebs-static
+  labels:
+    purpose: ebs-static
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:
+    - name: nginx-html
+      mountPath: /usr/share/nginx/html
+  nodeSelector:
+     topology.kubernetes.io/zone: us-east-1b
+
+  volumes:
+  - name: nginx-html
+    persistentVolumeClaim:
+      claimName: ebs-static
+
+---
+# 4 .service 
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-ebs-static
+spec:
+  type: LoadBalancer
+  selector:
+    purpose: ebs-static
+  ports:
+    - protocol: TCP
+      port: 80 # service port
+      targetPort: 80 # container port
+      nodePort: 30007 
+
