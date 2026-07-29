@@ -16,6 +16,7 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
+  name: nginx-ebs-dynamic
   labels:
     purpose: ebs-dynamic
 spec:
