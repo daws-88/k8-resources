@@ -1,0 +1,73 @@
+## service
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+    purpose: stateful-demo
+spec:
+  ports:
+  - port: 80
+    name: web 
+  selector:
+    app: nginx
+    purpose: stateful-demo
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-Headles
+  labels:
+    app: nginx
+    purpose: stateful-demo
+spec:
+  ports:
+  - port: 80 # port name
+    name: web # port name
+  clusterIP: None
+  selector:
+    app: nginx
+    purpose: stateful-demo
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: nginx
+spec:
+  selector:
+    matchLabels:
+      app: nginx  # has to match .spec.template.metadata.labels
+      purpose: stateful-demo
+  serviceName: "nginx-headles"
+  replicas: 3 
+  minReadySeconds: 10 # by default is 0
+  template:
+    metadata:
+      labels:
+        app: nginx
+        purpose: stateful-demo
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+          name: web # name of the port
+        volumeMounts:
+        - name: ebs
+          mountPath: /usr/share/nginx/html
+
+##2. PVC
+  volumeClaimTemplates:
+  - metadata:
+      name: ebs
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "roboshop-ebs"
+      resources:
+        requests:
+          storage: 1Gi
