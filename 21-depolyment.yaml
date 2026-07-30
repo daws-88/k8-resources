@@ -4,22 +4,25 @@ metadata:
   name: nginx
    # these are replica set labels
   labels:
-    purpose: deployment-demo
     project: roboshop
+    component: frontend
+    environment: dev
 
 spec:
   replicas: 3
   selector:
     # these labels are used to select pods
     matchLabels:
-      purpose: deployment-demo
-      project: roboshop   
+      project: roboshop
+      component: frontend
+      environment: dev  
   template:
     metadata:
     ## pod labels
       labels:
-        purpose: deployment-demo
-        project: roboshop  
+        project: roboshop
+        component: frontend
+        environment: dev
     spec:
       containers:
       - name: nginx
@@ -29,12 +32,16 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-service
+  name: nginx-Headless
 spec:
+  clusterIP: None ## Headless serive
   selector:
-    purpose: deployment-demo
-    project: roboshop  
+     project: roboshop
+     component: frontend
+     environment: dev
   ports:
     - protocol: TCP
       port: 80 ## service port
       targetPort: 80 ## container port
+
+        
