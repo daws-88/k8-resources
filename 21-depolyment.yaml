@@ -32,7 +32,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-Headless
+  name: nginx-headless
 spec:
   clusterIP: None ## Headless serive
   selector:
