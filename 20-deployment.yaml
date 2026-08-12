@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx
-   # these are replica set labels
+   # these are  deployment  labels
   labels:
     purpose: deployment-demo
     project: roboshop
@@ -31,6 +31,7 @@ kind: Service
 metadata:
   name: nginx-service
 spec:
+  type: LoadBalancer
   selector:
     purpose: deployment-demo
     project: roboshop  
