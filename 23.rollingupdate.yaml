@@ -12,7 +12,7 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 1 add extra
+      maxSurge: 1 # add extra
       maxUnavailable: 1 # remove old
   selector:
     # these labels are used to select pods
