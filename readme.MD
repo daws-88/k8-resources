@@ -1,0 +1,23 @@
+## k8 nodec labels ##
+```
+alpha.eksctl.io/cluster-name=roboshop-dev
+alpha.eksctl.io/nodegroup-name=roboshop-dev
+beta.kubernetes.io/arch=amd64
+beta.kubernetes.io/instance-type=c5a.large
+beta.kubernetes.io/os=linux
+eks.amazonaws.com/capacityType=SPOT
+eks.amazonaws.com/nodegroup-image=ami-07ac4c30f16332af3
+eks.amazonaws.com/nodegroup=roboshop-dev
+eks.amazonaws.com/sourceLaunchTemplateId=lt-021c11917e021b4e9
+eks.amazonaws.com/sourceLaunchTemplateVersion=1
+failure-domain.beta.kubernetes.io/region=us-east-1
+failure-domain.beta.kubernetes.io/zone=us-east-1d
+k8s.io/cloud-provider-aws=8bb250398402c1e52ca3dc196187e5cb
+kubernetes.io/arch=amd64
+kubernetes.io/hostname=ip-192-168-35-53.ec2.internal
+kubernetes.io/os=linux
+node.kubernetes.io/instance-type=c5a.large
+topology.k8s.aws/zone-id=use1-az6
+topology.kubernetes.io/region=us-east-1
+topology.kubernetes.io/zone=us-east-1d
+```
