@@ -23,7 +23,7 @@ spec:
     spec:
       topologySpreadConstraints: # topologySpreadConstraints goes under the Pod's spec.
         - maxSkew: 1
-          topologyKey: topology.kubernetes.io/hostname
+          topologyKey: kubernetes.io/hostname
           whenUnsatisfiable: DoNotSchedule
           labelSelector:
             matchLabels:
