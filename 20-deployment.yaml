@@ -7,7 +7,7 @@ metadata:
     purpose: deployment-demo
     project: roboshop
 
-spec:
+spec: # depolyment spec
   replicas: 3
   selector:
     # these labels are used to select pods
@@ -20,7 +20,7 @@ spec:
       labels:
         purpose: deployment-demo
         project: roboshop  
-    spec:
+    spec: #pod spec
       containers:
       - name: nginx
         image: nginx

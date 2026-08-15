@@ -2,13 +2,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx
-  namespace: roboshop
    # these are  deployment  labels
   labels:
     purpose: deployment-demo
     project: roboshop
+
 spec:
-  replicas: 4
+  replicas: 5
   selector:
     # these labels are used to select pods
     matchLabels:
@@ -19,16 +19,20 @@ spec:
     ## pod labels
       labels:
         purpose: deployment-demo
-        project: roboshop 
+        project: roboshop  
     spec:
-      topologySpreadConstraints: # topologySpreadConstraints goes under the Pod's spec.
-        - maxSkew: 1
-          topologyKey: kubernetes.io/hostname
-          whenUnsatisfiable: DoNotSchedule
-          labelSelector:
-            matchLabels: ## must match with pod labels 
-              purpose: deployment-demo
-              project: roboshop             
       containers:
       - name: nginx
         image: nginx
+
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: frontend-pdb
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      purpose: deployment-demo
+      project: roboshop 
