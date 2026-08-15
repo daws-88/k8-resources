@@ -26,15 +26,3 @@ spec:
       - name: nginx
         image: nginx
 
----
-apiVersion: policy/v1
-kind: PodDisruptionBudget
-metadata:
-  name: frontend-pdb
-  namespace: roboshop
-spec:
-  minAvailable: 2
-  selector:
-    matchLabels:
-      purpose: deployment-demo
-      project: roboshop 
