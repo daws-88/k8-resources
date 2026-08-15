@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx
+  namespace: roboshop
    # these are  deployment  labels
   labels:
     purpose: deployment-demo
